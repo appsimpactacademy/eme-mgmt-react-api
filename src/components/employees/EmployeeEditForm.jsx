@@ -5,6 +5,7 @@ import EmployeeForm from './EmployeeForm'
 
 const EmployeeEditForm = () => {
   const { id } = useParams();
+  const [errors, setErrors] = useState([]);
   const [formData, setFormData] = useState({
     first_name: '',
     last_name: '',
@@ -41,7 +42,12 @@ const EmployeeEditForm = () => {
       const response = await axios.put(`http://localhost:3000/api/v1/employees/${id}`, formData);
       console.log(response.data);
     } catch (error) {
-      console.error('Error:', error);
+      if(error.response && error.response.data) {
+        setErrors(error.response.data)
+        console.log(errors)
+      } else {
+        console.error('Error:', error);
+      }
     }
   };
 
@@ -52,6 +58,7 @@ const EmployeeEditForm = () => {
       handleSubmit={handleSubmit}
       handleChange={handleChange}
       submitButtonTitle={'Update Employee'}
+      errors={errors}
     />
   );
 };

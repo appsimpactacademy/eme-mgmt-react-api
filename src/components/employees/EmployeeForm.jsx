@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const EmployeeForm = ({formData, handleChange, handleSubmit, formTitle, submitButtonTitle}) => {
+const EmployeeForm = ({formData, handleChange, handleSubmit, formTitle, submitButtonTitle, errors}) => {
   return(
   	<div className="container">
       <div className="row">
@@ -21,6 +22,9 @@ const EmployeeForm = ({formData, handleChange, handleSubmit, formTitle, submitBu
                         value={formData.first_name}
                         onChange={handleChange}
                       />
+                      { errors && errors.first_name && errors.first_name.map(error => (
+                        <span key={error} className="text-danger">{error}</span>
+                      ))}
                     </div>
                   </div>
                   <div className="col-md-6">
@@ -34,6 +38,9 @@ const EmployeeForm = ({formData, handleChange, handleSubmit, formTitle, submitBu
                         value={formData.last_name}
                         onChange={handleChange}
                       />
+                      { errors && errors.last_name && errors.last_name.map(error => (
+                        <span key={error} className="text-danger">{error}</span>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -49,6 +56,9 @@ const EmployeeForm = ({formData, handleChange, handleSubmit, formTitle, submitBu
                         value={formData.email}
                         onChange={handleChange}
                       />
+                      { errors && errors.email && errors.email.map(error => (
+                        <span key={error} className="text-danger">{error}</span>
+                      ))}
                     </div>
                   </div>
                   <div className="col-md-6">
@@ -62,6 +72,9 @@ const EmployeeForm = ({formData, handleChange, handleSubmit, formTitle, submitBu
                         value={formData.contact_number}
                         onChange={handleChange}
                       />
+                      { errors && errors.contact_number && errors.contact_number.map(error => (
+                        <span key={error} className="text-danger">{error}</span>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -77,6 +90,9 @@ const EmployeeForm = ({formData, handleChange, handleSubmit, formTitle, submitBu
                         value={formData.address}
                         onChange={handleChange}
                       />
+                      { errors && errors.address && errors.address.map(error => (
+                        <span key={error} className="text-danger">{error}</span>
+                      ))}
                     </div>
                   </div>
                   <div className="col-md-6">
@@ -90,6 +106,9 @@ const EmployeeForm = ({formData, handleChange, handleSubmit, formTitle, submitBu
                         value={formData.pincode}
                         onChange={handleChange}
                       />
+                      { errors && errors.pincode && errors.pincode.map(error => (
+                        <span key={error} className="text-danger">{error}</span>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -105,6 +124,9 @@ const EmployeeForm = ({formData, handleChange, handleSubmit, formTitle, submitBu
                         value={formData.city}
                         onChange={handleChange}
                       />
+                      { errors && errors.city && errors.city.map(error => (
+                        <span key={error} className="text-danger">{error}</span>
+                      ))}
                     </div>
                   </div>
                   <div className="col-md-6">
@@ -118,6 +140,9 @@ const EmployeeForm = ({formData, handleChange, handleSubmit, formTitle, submitBu
                         value={formData.state}
                         onChange={handleChange}
                       />
+                      { errors && errors.state && errors.state.map(error => (
+                        <span key={error} className="text-danger">{error}</span>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -133,6 +158,9 @@ const EmployeeForm = ({formData, handleChange, handleSubmit, formTitle, submitBu
                         value={formData.date_of_birth}
                         onChange={handleChange}
                       />
+                      { errors && errors.date_of_birth && errors.date_of_birth.map(error => (
+                        <span key={error} className="text-danger">{error}</span>
+                      ))}
                     </div>
                   </div>
                   <div className="col-md-6">
@@ -146,10 +174,16 @@ const EmployeeForm = ({formData, handleChange, handleSubmit, formTitle, submitBu
                         value={formData.date_of_hiring}
                         onChange={handleChange}
                       />
+                      { errors && errors.date_of_hiring && errors.date_of_hiring.map(error => (
+                        <span key={error} className="text-danger">{error}</span>
+                      ))}
                     </div>
                   </div>
                 </div>
                 <button type="submit" className="btn btn-primary mt-4">{submitButtonTitle}</button>
+                <Link to={`/`} className="btn btn-primary mt-4">
+                  Back
+                </Link>
               </form>
             </div>
           </div>

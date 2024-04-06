@@ -6,6 +6,10 @@ import EmployeeRow from './EmployeeRow';
 function EmployeeList() {
   const [employees, setEmployees] = useState([]);
 
+  const handleDelete = (deletedId) => {
+    setEmployees(employees.filter(employee => employee.id !== deletedId));
+  };
+
   useEffect(() => {
     const fetchEmployees = async () => {
       try {
@@ -20,25 +24,29 @@ function EmployeeList() {
   }, []);
 
   return (
-    <div>
-      <h1>Employee List</h1>
-      <Link to={`/employee/new`} className="btn btn-primary">
-        Create New Employee
-      </Link>
-      <table className="table table-bordered">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th colSpan="3">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {employees.map(employee => (
-            <EmployeeRow key={employee.id} employee={employee} />
-          ))}
-        </tbody>
-      </table>
+    <div className="container">
+      <div className="row">
+        <div className="col-lg-10 mx-auto">
+          <h1>Employee List</h1>
+          <Link to={`/employee/new`} className="btn btn-primary">
+            Create New Employee
+          </Link>
+          <table className="table table-bordered">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th colSpan="3">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {employees.map(employee => (
+                <EmployeeRow key={employee.id} employee={employee} onDelete={handleDelete} />
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 }
