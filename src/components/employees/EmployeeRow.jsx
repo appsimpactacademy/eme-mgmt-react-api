@@ -27,10 +27,10 @@ function EmployeeRow({ employee, onDelete }) {
         <Link to={`/employee/${employee.id}`} className="btn btn-primary">
           View
         </Link>
-        <Link to={`/employee/${employee.id}/edit`} className="btn btn-warning">
+        <Link to={`/employee/${employee.id}/edit`} className="btn btn-warning ms-1">
           Edit
         </Link>
-        <button onClick={handleDelete} className="btn btn-danger">Delete</button>
+        <button onClick={handleDelete} className="btn btn-danger ms-1">Delete</button>
       </td>
     </tr>
   );

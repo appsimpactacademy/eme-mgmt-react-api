@@ -181,7 +181,7 @@ const EmployeeForm = ({formData, handleChange, handleSubmit, formTitle, submitBu
                   </div>
                 </div>
                 <button type="submit" className="btn btn-primary mt-4">{submitButtonTitle}</button>
-                <Link to={`/`} className="btn btn-primary mt-4">
+                <Link to={`/`} className="btn btn-primary mt-4 ms-1">
                   Back
                 </Link>
               </form>
